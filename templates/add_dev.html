@@ -1,0 +1,84 @@
+{% extends 'ip_manage.html' %}
+{% block showpage %}
+<form class="form-horizontal" role="form" method="post">
+{% if ip_info %}
+  <div class="control-group">
+    <label class="control-label">IP地址</label>
+    <div class="controls">
+      <p class="control-label">{{ip_info.ipaddr}}</p></div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">CPU</label>
+    <div class="controls">
+      <input type="text" class="input-block-level" name="cpu" value="{{ip_info.cpu}}"></div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">内存容量</label>
+    <div class="controls">
+      <input type="text" class="input-block-level" name="memory" value="{{ip_info.memory}}"></div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">设备位置</label>
+    <div class="controls">
+      <input type="text" class="input-block-level" name="location" value="{{ip_info.location}}"></div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">服务器型号</label>
+    <div class="controls">
+      <input type="text" class="input-block-level" name="product" value="{{ip_info.product}}"></div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">系统类型</label>
+    <div class="controls">
+      <input type="text" class="input-block-level" name="platform" value="{{ip_info.platform}}"></div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">SN号</label>
+    <div class="controls">
+      <input type="text" class="input-block-level" name="sn" value="{{ip_info.sn}}"></div>
+  </div>
+{% else %}
+  <div class="control-group">
+    <label class="control-label">IP地址</label>
+    <div class="controls">
+      <input type="text" class="input-block-level" name="ipaddr"></div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">CPU</label>
+    <div class="controls">
+      <input type="text" class="input-block-level" name="cpu"></div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">内存容量</label>
+    <div class="controls">
+      <input type="text" class="input-block-level" name="memory"></div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">设备位置</label>
+    <div class="controls">
+      <input type="text" class="input-block-level" name="location"></div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">服务器型号</label>
+    <div class="controls">
+      <input type="text" class="input-block-level" name="product"></div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">系统类型</label>
+    <div class="controls">
+      <input type="text" class="input-block-level" name="platform"></div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">SN号</label>
+    <div class="controls">
+      <input type="text" class="input-block-level" name="sn"></div>
+  </div>
+{% endif %}
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn">提交</button>
+      <a class="btn" href="/dev_manage/">取消</a>
+    </div>
+  </div>
+</form>
+{% endblock %}

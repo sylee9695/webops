@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>main page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Le styles -->
+  <link href="http://cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap.css" rel="stylesheet">
+  <link href="http://cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap-responsive.css" rel="stylesheet">
+  <link href="/static/css/pagination.css" rel="stylesheet">
+
+  <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+
+      @media (max-width: 980px) {
+        /* Enable use of floated navbar text */
+        .navbar-text.pull-right {
+          float: none;
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+      }
+    </style>
+
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+  <script src="../assets/js/html5shiv.js"></script>
+  <![endif]-->
+
+  <!-- Fav and touch icons -->
+
+</head>
+
+<body>
+
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="brand" href="#">运维管理平台</a>
+        <div class="nav-collapse collapse">
+
+          <ul class="nav">
+            <li class="active">
+              <a href="#">主面板</a>
+            </li>
+            <li>
+              <a href="/ip_manage/">设备管理</a>
+            </li>
+            <li>
+              <a href="#">服务监控</a>
+            </li>
+          </ul>
+          <ul class="nav pull-right">
+            <li class="divider-vertical">
+              <a>{{username}}</a>
+            </li>
+            <li class="dropdown">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                后台管理 <strong class="caret"></strong>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="/admin/">用户管理</a>
+                </li>
+                <li>
+                  <a href="#">修改密码</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <a href="/logout/">退出</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <!--/.nav-collapse --> </div>
+    </div>
+  </div>
+
+  <div class="container">
+    {% block content %}
+
+      {% endblock %}
+    <hr>
+
+    <footer>
+      <p>&copy; By lsy 2014</p>
+    </footer>
+
+  </div>
+  <!--/.fluid-container-->
+
+  <!-- Le javascript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+  <script src="http://cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

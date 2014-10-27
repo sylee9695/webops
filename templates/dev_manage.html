@@ -1,0 +1,56 @@
+{% extends 'ip_manage.html' %}
+{% block showpage %}
+  <form class="form-horizontal" role="form" method="get" action="/search_dev/">
+    <div class="control-group">
+      <div class="controls">
+        <input type="text" class="input" name="search">
+        <button type="submit" class="btn">查询</button>
+        </div>
+    </div>
+  </form>
+
+  <table class="table">
+    <th></th>
+    <th>IP地址</th>
+    <th>cpu</th>
+    <th>内存</th>
+    <th>idc位置</th>
+    <th>服务器型号</th>
+    <th>系统类型</th>
+    <th>SN</th>
+    <tr>{{search_error}}</tr>
+    <form class="form-horizontal" role="form" method="post">
+    {% if show_list %}
+      {% for dev in show_list %}
+      <tr>
+        <td><input type="checkbox" class="checkbox" name="post_ip" value="{{ dev.ipaddr }}"></td>
+        <td><a href="/mod_dev/?ip={{ dev.ipaddr }}">{{ dev.ipaddr }}</a></td>
+        <td>{{ dev.cpu }}</td>
+        <td>{{ dev.memory }}</td>
+        <td>{{ dev.location }}</td>
+        <td>{{ dev.product }}</td>
+        <td>{{ dev.platform }}</td>
+        <td>{{ dev.sn }}</td>
+      </tr>
+      {% endfor %}
+      <button type="submit" class="btn">删除</button>
+    {%endif%}
+    </form>
+  </table>
+
+
+  {% if paginator.page_range %}
+  <ul class="pagination">
+    {% if show_list.has_previous %}
+    <li><a href="?page={{ show_list.previous_page_number }}&search={{ s_text }}">&laquo;</a></li>
+    {% endif %}
+    {% for i in paginator.page_range %}
+    <li><a href="?page={{i}}&search={{ s_text }}" name="page">{{ i }}</a></li>
+    {%endfor%}
+    {% if show_list.has_next %}
+    <li><a href="?page={{ show_list.next_page_number }}&search={{ s_text }}">&raquo;</a></li>
+    {% endif %}
+  </ul>
+  {% endif %}
+
+{% endblock %}

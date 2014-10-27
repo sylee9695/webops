@@ -1,0 +1,67 @@
+{% extends 'ip_manage.html' %}
+{% block showpage %}
+<form class="form-horizontal" role="form" method="post">
+{% if ip_info %}
+  <div class="control-group">
+    <label class="control-label">IP地址</label>
+    <div class="controls">
+      <p class="control-label">{{ip_info.ipaddr}}</p></div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">主机名</label>
+    <div class="controls">
+      <input type="text" class="input-block-level" name="hostname" value="{{ip_info.hostname}}"></div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">系统类型</label>
+    <div class="controls">
+      <input type="text" class="input-block-level" name="ostype" value="{{ip_info.ostype}}"></div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">端口</label>
+    <div class="controls">
+      <input type="text" class="input-block-level" name="ports" value="{{ip_info.ports}}"></div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">应用</label>
+    <div class="controls">
+      <input type="text" class="input-block-level" name="application" value="{{ip_info.application}}"></div>
+  </div>
+{% else %}
+  <div class="control-group">
+    <label class="control-label">IP地址</label>
+    <div class="controls">
+      <input type="text" class="input-block-level" name="ipaddr"></div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">主机名</label>
+    <div class="controls">
+      <input type="text" class="input-block-level" name="hostname"></div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">系统类型</label>
+    <div class="controls">
+      <input type="text" class="input-block-level" name="ostype"></div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">端口</label>
+    <div class="controls">
+      <input type="text" class="input-block-level" name="ports"></div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">应用</label>
+    <div class="controls">
+      <input type="text" class="input-block-level" name="application"></div>
+  </div>
+{% endif %}
+
+  <div class="control-group">
+    <div class="controls">
+      <p>{{ add_error }}</p>
+      <button type="submit" class="btn">提交</button>
+      <a class="btn" href="/ip_manage/">取消</a>
+    </div>
+  </div>
+</form>
+
+{% endblock %}

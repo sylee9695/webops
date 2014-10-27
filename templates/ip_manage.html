@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row-fluid">
+
+  <div class="span3">
+    <div class="well sidebar-nav">
+      <ul class="nav nav-list">
+        <li class="active">
+          <a href="/ip_manage/">IP列表</a>
+        </li>
+        <li>
+          <a href="/dev_manage/">设备列表</a>
+        </li>
+        <li>
+          <a href="/add_ip/">添加IP</a>
+        </li>
+        <li>
+          <a href="/add_dev/">添加设备</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="span9 well">
+  {% block showpage %}
+    <form class="form-horizontal" role="form" method="get" action="/search_ip/">
+      <div class="control-group">
+        <div class="controls">
+          <input type="text" class="input" name="search">
+          <button type="submit" class="btn">查询</button>
+          </div>
+      </div>
+    </form>
+
+      <table class="table">
+        <th></th>
+        <th>IP地址</th>
+        <th>主机名</th>
+        <th>系统类型</th>
+        <th>开放端口</th>
+        <th>应用</th>
+        <tr>{{search_error}}</tr>
+        <form class="form-horizontal" role="form" method="post">
+        <!--show ip list-->
+          {% if show_list %}
+            {% for ip in show_list %}
+            <tr>
+              <td><input type="checkbox" class="checkbox" name="post_ip" value="{{ ip.ipaddr }}"></td>
+              <td><a href="/mod_ip/?ip={{ ip.ipaddr }}">{{ ip.ipaddr }}</a></td>
+              <td>{{ ip.hostname }}</td>
+              <td>{{ ip.ostype }}</td>
+              <td>{{ ip.ports }}</td>
+              <td>{{ ip.application }}</td>
+            </tr>
+            {% endfor %}
+            <button type="submit" class="btn">删除</button>
+          {%endif%}
+
+        </form>
+      </table>
+
+
+    {% if paginator.page_range %}
+    <ul class="pagination">
+      {% if show_list.has_previous %}
+      <li><a href="?page={{ show_list.previous_page_number }}&search={{ s_text }}">&laquo;</a></li>
+      {% endif %}
+      {% for i in paginator.page_range %}
+      <li><a href="?page={{i}}&search={{ s_text }}" name="page">{{ i }}</a></li>
+      {%endfor%}
+      {% if show_list.has_next %}
+      <li><a href="?page={{ show_list.next_page_number }}&search={{ s_text }}">&raquo;</a></li>
+      {% endif %}
+    </ul>
+    {% endif %}
+
+  {% endblock %}
+  </div>
+
+</div>
+{% endblock %}
